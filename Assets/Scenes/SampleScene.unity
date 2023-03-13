@@ -280,9 +280,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1212832882}
-        m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
-        m_MethodName: Select
+      - m_Target: {fileID: 1004238691}
+        m_TargetAssemblyTypeName: GPTAPI2, Assembly-CSharp
+        m_MethodName: Send
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -885,6 +885,7 @@ GameObject:
   - component: {fileID: 1004238687}
   - component: {fileID: 1004238686}
   - component: {fileID: 1004238690}
+  - component: {fileID: 1004238691}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -1008,6 +1009,18 @@ MonoBehaviour:
   onHide:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1004238691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004238685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 780041465d69e418288261555a85c01e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1212832878
 GameObject:
   m_ObjectHideFlags: 0

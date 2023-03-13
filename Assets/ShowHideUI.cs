@@ -33,9 +33,11 @@ namespace MMORPG.UI
 
         public void SetActive(bool isActive)
         {
-            if (uiContainer != null)
-                uiContainer?.SetActive(isActive);
-            onShow?.Invoke();
+            uiContainer?.SetActive(isActive);
+            if (isActive)
+                onShow?.Invoke();
+            if (!isActive)
+                onHide?.Invoke();
         }
     }
 }
