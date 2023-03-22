@@ -1,19 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class ChatBox : MonoBehaviour
 {
-    [SerializeField] private GameObject frame;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private Frame frame;
+    [SerializeField] private TextMeshProUGUI chatContent;
 
-    // Update is called once per frame
-    void Update()
+    public void SubmitChat()
     {
-        
+        frame.AddChatMessage(chatContent.text,"user");
+        chatContent.text = "";
     }
 }

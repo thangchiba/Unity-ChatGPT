@@ -591,7 +591,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 780041465d69e418288261555a85c01e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chatBox: {fileID: 4126491434851606578}
+  chatBox: {fileID: 0}
   chatContent: {fileID: 1212832880}
 --- !u!114 &1212832880 stripped
 MonoBehaviour:
@@ -625,15 +625,15 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4942514820052518617, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
   m_PrefabInstance: {fileID: 4942514819321283574}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4126491434851606578 stripped
+--- !u!114 &1961510192 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9066706002631091140, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4942514820052518598, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
   m_PrefabInstance: {fileID: 4942514819321283574}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1961510190}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Script: {fileID: 11500000, guid: 498bfb1c33b8a4932ad9c27a641aad71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &4942514819321283574
@@ -700,9 +700,41 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4942514819610176287, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942514819610176287, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942514819610176287, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1004238691}
+    - target: {fileID: 4942514819610176287, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1961510192}
+    - target: {fileID: 4942514819610176287, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942514819610176287, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942514819610176287, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SubmitChat
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942514819610176287, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: ChatBox, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942514819610176287, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4942514819772968613, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -711,6 +743,14 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4942514820052518598, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+      propertyPath: frame
+      value: 
+      objectReference: {fileID: 4942514819321283575}
+    - target: {fileID: 4942514820052518598, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+      propertyPath: chatContent
+      value: 
+      objectReference: {fileID: 1212832880}
     - target: {fileID: 4942514820052518616, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
       propertyPath: m_Name
       value: ChatBox
@@ -827,6 +867,14 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6141190128373907571, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+      propertyPath: messageGO
+      value: 
+      objectReference: {fileID: 2679869446230407478, guid: 3efb9738fd570439488c3e0e621e7b40, type: 3}
+    - target: {fileID: 6141190128373907571, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+      propertyPath: messagePrefab
+      value: 
+      objectReference: {fileID: 2679869446230407478, guid: 3efb9738fd570439488c3e0e621e7b40, type: 3}
     - target: {fileID: 9066706002631091141, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -849,3 +897,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+--- !u!114 &4942514819321283575 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6141190128373907571, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+  m_PrefabInstance: {fileID: 4942514819321283574}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24ffccb08a6214387b53f4355129ffb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
