@@ -191,6 +191,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &289941737 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4942514819610176287, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+  m_PrefabInstance: {fileID: 4942514819321283574}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -563,19 +574,7 @@ MonoBehaviour:
   uiContainer: {fileID: 1961510190}
   onShow:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1327204668}
-        m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
-        m_MethodName: Select
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
+      m_Calls: []
   onHide:
     m_PersistentCalls:
       m_Calls: []
@@ -591,8 +590,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 780041465d69e418288261555a85c01e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chatBox: {fileID: 0}
-  chatContent: {fileID: 1212832880}
 --- !u!114 &1212832880 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4942514820532772742, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
@@ -604,15 +601,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1327204668 stripped
+--- !u!114 &1362525101 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4942514820443556554, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4942514820676696155, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
   m_PrefabInstance: {fileID: 4942514819321283574}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a98125502f715b4b83cfb77b434e436, type: 3}
+  m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1961510190 stripped
@@ -634,6 +631,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 498bfb1c33b8a4932ad9c27a641aad71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1961510193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1961510190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 780041465d69e418288261555a85c01e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &4942514819321283574
@@ -744,9 +753,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4942514820052518598, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+      propertyPath: api
+      value: 
+      objectReference: {fileID: 1961510193}
+    - target: {fileID: 4942514820052518598, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
       propertyPath: frame
       value: 
       objectReference: {fileID: 4942514819321283575}
+    - target: {fileID: 4942514820052518598, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+      propertyPath: isChatAI
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942514820052518598, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+      propertyPath: inputField
+      value: 
+      objectReference: {fileID: 1362525101}
     - target: {fileID: 4942514820052518598, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
       propertyPath: chatContent
       value: 
@@ -866,6 +887,34 @@ PrefabInstance:
     - target: {fileID: 4942514820642731219, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
       propertyPath: m_AnchorMin.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942514820676696155, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942514820676696155, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942514820676696155, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 289941737}
+    - target: {fileID: 4942514820676696155, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942514820676696155, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Select
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942514820676696155, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.UI.Selectable, UnityEngine.UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942514820676696155, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6141190128373907571, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
       propertyPath: messageGO

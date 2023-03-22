@@ -625,6 +625,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 0
+      - m_Target: {fileID: 4942514820052518598}
+        m_TargetAssemblyTypeName: ChatBox, Assembly-CSharp
+        m_MethodName: SubmitChat
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &4942514819772968612
 GameObject:
@@ -801,6 +813,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4942514820052518617}
   - component: {fileID: 4942514820052518598}
+  - component: {fileID: 1961510193}
   m_Layer: 5
   m_Name: ChatBox
   m_TagString: Untagged
@@ -842,7 +855,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 498bfb1c33b8a4932ad9c27a641aad71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frame: {fileID: 4942514820108639825}
+  api: {fileID: 1961510193}
+  frame: {fileID: 6141190128373907571}
+  inputField: {fileID: 4942514820676696155}
+  chatContent: {fileID: 4942514820532772742}
+  isChatAI: 1
+--- !u!114 &1961510193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4942514820052518616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 780041465d69e418288261555a85c01e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4942514820443556559
 GameObject:
   m_ObjectHideFlags: 0
@@ -1801,23 +1830,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddc63e5ad579f401e901e61bb0d9197c, type: 3}
---- !u!1 &4942514819047020559 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9096941866405411440, guid: ddc63e5ad579f401e901e61bb0d9197c, type: 3}
-  m_PrefabInstance: {fileID: 4227054193453556351}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7280148663898821452
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4942514819047020559}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4733039c1810d4e0cb2838c0eee2930c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4942514820108639825 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9096941867499666478, guid: ddc63e5ad579f401e901e61bb0d9197c, type: 3}
@@ -1835,6 +1847,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24ffccb08a6214387b53f4355129ffb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  messagePrefab: {fileID: 2679869446230407478, guid: 3efb9738fd570439488c3e0e621e7b40, type: 3}
 --- !u!224 &4942514820108639838 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 9096941867499666465, guid: ddc63e5ad579f401e901e61bb0d9197c, type: 3}

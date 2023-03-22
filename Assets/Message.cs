@@ -13,7 +13,6 @@ public class Message : MonoBehaviour
     {
         this.content.text = content;
     }
-
     public void SetAvatar(string role)
     {
         // if(role == "user") avatar
