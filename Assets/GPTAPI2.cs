@@ -4,9 +4,12 @@ using UnityEngine.Networking;
 using System.Text;
 using System.Collections.Generic;
 using TMPro;
+using System;
+using UnityEngine.Serialization;
 
 public class GPTAPI2 : MonoBehaviour
 {
+    [FormerlySerializedAs("chatContent")] [SerializeField] TextMeshProUGUI chatBox;
     [SerializeField] TextMeshProUGUI chatContent;
 
     public void Send()
@@ -18,81 +21,99 @@ public class GPTAPI2 : MonoBehaviour
             {
                 new MessageModel { role = Role.system.ToString(), content = "You are a helpful assistant for my game. Player using Vietnamese, Japanese or English." },
                 new MessageModel { role = Role.system.ToString(), content = "ThangChiba created you." },
-                new MessageModel { role = Role.user.ToString(), content = "Hello how are you? do you need me?" },
+                new MessageModel { role = Role.user.ToString(), content = chatContent.text},
             }
         };
         StartCoroutine(ChatWithAI(requestBody, HandleChatResponse));
     }
 
 
-    public void HandleChatResponse(string response)
+    private void HandleChatResponse(string response)
     {
-        // do something with the response
         Debug.Log(response);
     }
 
 
     public delegate void ChatCallback(string response);
 
+
     public IEnumerator ChatWithAI(RequestBody requestBody, ChatCallback callback)
     {
+        chatBox.text = "";
         string url = "https://api.openai.com/v1/chat/completions";
         string bodyJsonString = JsonUtility.ToJson(requestBody);
         var request = new UnityWebRequest(url, "POST");
+        byte[] bodyRaw = Encoding.UTF8.GetBytes(bodyJsonString);
+        DownloadHandlerScript downloadHandler = new MyCustomScript((responseText) => chatBox.text+= responseText);
         using (request)
         {
-            byte[] bodyRaw = Encoding.UTF8.GetBytes(bodyJsonString);
             request.uploadHandler = (UploadHandler)new UploadHandlerRaw(bodyRaw);
-            request.downloadHandler = new DownloadHandlerBuffer();
+            request.downloadHandler = downloadHandler;
             request.SetRequestHeader("Content-Type", "application/json");
-            request.SetRequestHeader("Authorization", "Bearer " + "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");
+            request.SetRequestHeader("Authorization",
+                "Bearer " + "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");
             yield return request.SendWebRequest();
             if (request.result != UnityWebRequest.Result.Success)
             {
                 Debug.Log(request.error);
             }
-            else
+            //string responseText = downloadHandler.text;
+            //yield return request.downloadedBytes;
+        }
+
+        chatContent.text = "";
+    }
+
+    private class MyCustomScript : DownloadHandlerScript
+    {
+        //public MyCustomScript(AsyncCallBack)
+
+        private string dataString = "";
+        private Action<string> callBack;
+
+        public MyCustomScript(Action<string> callBack)
+        {
+            this.callBack = callBack;
+        }
+
+        protected override bool ReceiveData(byte[] data, int dataLength)
+        {
+            dataString = Encoding.UTF8.GetString(data, 0, dataLength);
+            string[] responseData = dataString.Split(new string[] { "data: " }, System.StringSplitOptions.RemoveEmptyEntries);
+
+            foreach (string response in responseData)
             {
-                DownloadHandlerBuffer downloadHandler = request.downloadHandler as DownloadHandlerBuffer;
-                string responseText = downloadHandler.text;
-                Debug.Log(responseText);
-
-                string[] responseData = responseText.Split(new string[] { "data: " }, System.StringSplitOptions.RemoveEmptyEntries);
-
-                foreach (string response in responseData)
+                if (response.Trim() == "[DONE]")
                 {
-                    if (response.Trim() == "[DONE]")
-                    {
-                        // call the callback function with an empty string to indicate that the response is complete
-                        callback("");
-                        break;
-                    }
+                    // call the callback function with an empty string to indicate that the response is complete
+                    Debug.Log("");
+                    break;
+                }
 
-                    ChatCompletionResponse chatCompletion = JsonUtility.FromJson<ChatCompletionResponse>(response);
+                ChatCompletionResponse chatCompletion = JsonUtility.FromJson<ChatCompletionResponse>(response);
 
-                    string deltaContent = null;
-                    foreach (Choice choice in chatCompletion.choices)
+                string deltaContent = null;
+                foreach (Choice choice in chatCompletion.choices)
+                {
+                    if (choice.delta != null && !string.IsNullOrEmpty(choice.delta.content))
                     {
-                        if (choice.delta != null && !string.IsNullOrEmpty(choice.delta.content))
-                        {
-                            deltaContent = choice.delta.content;
-                            break; // only consider the first delta with content field
-                        }
-                    }
-
-                    if (deltaContent != null)
-                    {
-                        callback(deltaContent);
-                        Debug.Log(deltaContent);
-                        chatContent.text += deltaContent;
-                    }
-                    else
-                    {
-                        //Debug.LogWarning("No 'content' field found in response.");
+                        deltaContent = choice.delta.content;
+                        break; // only consider the first delta with content field
                     }
                 }
-                Debug.LogWarning("Request complete");
+
+                if (deltaContent != null)
+                {
+                    //callback(deltaContent);
+                    //Debug.Log(deltaContent);
+                    callBack(deltaContent);
+                }
+                else
+                {
+                    //Debug.LogWarning("No 'content' field found in response.");
+                }
             }
+            return base.ReceiveData(data, dataLength);
         }
     }
 }
