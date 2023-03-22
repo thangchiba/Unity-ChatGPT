@@ -5,22 +5,29 @@ using System.Text;
 using System.Collections.Generic;
 using TMPro;
 using System;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine.Serialization;
 
 public class GPTAPI : MonoBehaviour
 {
+    [SerializeField] private int maxSendCount = 10;
+    [SerializeField] private List<MessageModel> listTrain = new();
+    private List<MessageModel> listMessage = new();
     public delegate void ChatCallback(string response);
     public void Send(string content,ChatCallback callback)
     {
-        RequestBody requestBody = new RequestBody
+        // Create a new MessageModel with the user role and the specified content
+        var newMessage = new MessageModel { role = Role.user.ToString(), content = content };
+        listMessage.Add(newMessage);
+        // Take the last 10 items from the list
+        var sendMessages = new List<MessageModel>(listTrain);
+        sendMessages.AddRange(listMessage.TakeLast(maxSendCount).ToList());
+        
+        var requestBody = new RequestBody
         {
             model = "gpt-3.5-turbo",
-            messages = new List<MessageModel>
-            {
-                new MessageModel { role = Role.system.ToString(), content = "You are a helpful assistant for my game. Player using Vietnamese, Japanese or English." },
-                new MessageModel { role = Role.system.ToString(), content = "ThangChiba created you." },
-                new MessageModel { role = Role.user.ToString(), content = content},
-            }
+            messages = sendMessages
         };
         StartCoroutine(ChatWithAI(requestBody, callback));
     }
