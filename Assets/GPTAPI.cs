@@ -7,14 +7,21 @@ using TMPro;
 using System;
 using System.Linq;
 using Unity.VisualScripting;
+using UnityEngine.Events;
 using UnityEngine.Serialization;
 
 public class GPTAPI : MonoBehaviour
 {
-    [SerializeField] private int maxSendCount = 10;
-    [SerializeField] private List<MessageModel> listTrain = new();
-    private List<MessageModel> listMessage = new();
+    [SerializeField] private static int maxSendCount = 10;
+    [SerializeField] private static List<MessageModel> listTrain = new();
+    [SerializeField] private static List<MessageModel> listMessage = new();
+    [SerializeField] private UnityEvent listEvent;
     public delegate void ChatCallback(string response);
+
+    private static void GPTCallback(string response)
+    {
+        listMessage.Add(new MessageModel(){content = response,role = "assistant"});
+    }
     public void Send(string content,ChatCallback callback)
     {
         // Create a new MessageModel with the user role and the specified content
@@ -52,6 +59,8 @@ public class GPTAPI : MonoBehaviour
             {
                 Debug.Log(request.error);
             }
+
+            // var s = request.downloadHandler.deltaContent;
             //string responseText = downloadHandler.text;
             //yield return request.downloadedBytes;
         }
@@ -64,6 +73,7 @@ public class GPTAPI : MonoBehaviour
         private string deltaContent = "";
         private string dataString = "";
         private readonly ChatCallback callBack;
+        private readonly ChatCallback gptCallback;
 
         public MyCustomScript(ChatCallback callBack)
         {

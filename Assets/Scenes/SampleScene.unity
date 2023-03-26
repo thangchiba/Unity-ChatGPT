@@ -579,8 +579,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 780041465d69e418288261555a85c01e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSendCount: 10
-  listTrain: []
+  listEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1961510190 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4942514820052518616, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
@@ -598,6 +599,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1004238689}
     m_Modifications:
+    - target: {fileID: 1961510193, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+      propertyPath: listEvent.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1961510193, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
       propertyPath: listTrain.Array.size
       value: 2
@@ -618,6 +623,34 @@ PrefabInstance:
     - target: {fileID: 1961510193, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
       propertyPath: listTrain.Array.data[1].content
       value: ThangChiba created you.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1961510193, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+      propertyPath: listEvent.Array.data[0].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1961510193, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+      propertyPath: listEvent.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1961510193, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+      propertyPath: listEvent.Array.data[0].m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1961510193, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+      propertyPath: listEvent.Array.data[0].m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1961510193, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+      propertyPath: listEvent.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1961510193, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+      propertyPath: listEvent.Array.data[0].m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1961510193, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+      propertyPath: listEvent.Array.data[0].m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4942514819041753004, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
       propertyPath: m_Color.a
