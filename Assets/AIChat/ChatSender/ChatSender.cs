@@ -17,12 +17,12 @@ namespace MMORPG.UI.AIChat
         {
             this.chatMode = chatMode;
         }
-        private void OnEnable()
-        {
-            submitChat.onClick.AddListener(SubmitChat);
-        }
+        // private void OnEnable()
+        // {
+        //     submitChat.onClick.AddListener(SubmitChat);
+        // }
 
-        private void SubmitChat()
+        public void SubmitChat()
         {
             chatMode.SubmitChat(chatContent.text);
         }
