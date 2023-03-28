@@ -31,6 +31,6 @@ public class ChatBox : MonoBehaviour
     private void ChatAI()
     {
         var message = frame.AddChatMessage("","assistant");
-        api.Send(chatContent.text,message.SetContent);
+        // api.Send(chatContent.text,message.SetContent);
     }
 }

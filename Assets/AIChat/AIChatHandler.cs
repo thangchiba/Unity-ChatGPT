@@ -11,7 +11,7 @@ namespace MMORPG.UI.AIChat
         {
             Debug.Log("Submit Chat On Base");
             chatStorage.messages.Add(new AIMessage(Role.user,content));
-            chatManager.SendRequest(chatStorage);
+            chatManager.Send(chatStorage);
         }
         
         public abstract void OnReceiveResponse(string content);

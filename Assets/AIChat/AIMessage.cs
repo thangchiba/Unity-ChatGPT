@@ -16,12 +16,12 @@ namespace MMORPG.UI.AIChat
     [System.Serializable]
     public class AIMessage
     {
-        public Role role;
+        public string role;
         public string content;
 
         public AIMessage(Role role, string content)
         {
-            this.role = role;
+            this.role = role.ToString();
             this.content = content;
         }
     }

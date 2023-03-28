@@ -6,22 +6,17 @@ using UnityEngine.UI;
 
 namespace MMORPG.UI.AIChat
 {
-    [RequireComponent(typeof(ChatMode))]
     public class ToggleChatMode : MonoBehaviour
     {
-        [SerializeField] private ChatSender chatSender;
-        private Button button;
-        [SerializeField] private ChatMode chatMode;
+        private ChatMode chatMode;
 
-        public void OnEnable()
-        {
-            button = GetComponent<Button>();
-            button.onClick.AddListener(OnButtonClick);
-        }
+        public ChatMode GetChatMode() => chatMode;
 
-        private void OnButtonClick()
+        public void SetChatMode(ChatMode chatMode)
         {
-            chatSender.SetChatMode(chatMode);
+            chatMode.Uninstall();
+            this.chatMode = chatMode;
+            chatMode.Setup();
         }
     }
 }

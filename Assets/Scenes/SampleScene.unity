@@ -123,6 +123,50 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &83696619
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 83696621}
+  - component: {fileID: 83696620}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &83696620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 83696619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 644aa703c3654fe4865fabbb417f9fdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &83696621
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 83696619}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 790.02155, y: 503.92502, z: 2.7482755}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &272834367
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,7 +252,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8319285acf0840fd92ffb6a5f9ddd73a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chatStorage: {fileID: 0}
+  chatStorage: {fileID: 11400000, guid: 4e4b5a610a96b4de8b344b02557fb501, type: 2}
+  chatManager: {fileID: 83696620}
   frameChat: {fileID: 329266768}
 --- !u!1 &329266767 stripped
 GameObject:
@@ -262,6 +307,7 @@ GameObject:
   - component: {fileID: 526808818}
   - component: {fileID: 526808819}
   - component: {fileID: 526808820}
+  - component: {fileID: 526808821}
   m_Layer: 5
   m_Name: ChatToggle
   m_TagString: Untagged
@@ -331,6 +377,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 1
   m_VerticalFit: 0
+--- !u!114 &526808821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526808817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9424642a451d4a4aadaccb7d91b1b626, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -997,6 +1055,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chatContent: {fileID: 500393478}
   submitChat: {fileID: 1493689543}
+  toggleChatMode: {fileID: 526808821}
 --- !u!114 &1493689543 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4942514819610176287, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
@@ -1020,8 +1079,8 @@ GameObject:
   - component: {fileID: 1783842607}
   - component: {fileID: 1783842606}
   - component: {fileID: 1783842605}
-  - component: {fileID: 1783842608}
   - component: {fileID: 1783842609}
+  - component: {fileID: 1783842610}
   m_Layer: 5
   m_Name: General
   m_TagString: Untagged
@@ -1132,20 +1191,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1783842603}
   m_CullTransparentMesh: 1
---- !u!114 &1783842608
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1783842603}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9424642a451d4a4aadaccb7d91b1b626, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chatSender: {fileID: 1410659847}
-  chatMode: {fileID: 1783842609}
 --- !u!114 &1783842609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1158,6 +1203,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de5ad6e0343d4441a323617090359082, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1783842610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783842603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ea1837368214f47bd2d568da61e5b34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chatMode: {fileID: 1783842609}
 --- !u!1 &1959912576
 GameObject:
   m_ObjectHideFlags: 0
@@ -1170,8 +1228,8 @@ GameObject:
   - component: {fileID: 1959912580}
   - component: {fileID: 1959912579}
   - component: {fileID: 1959912578}
-  - component: {fileID: 1959912581}
   - component: {fileID: 1959912582}
+  - component: {fileID: 1959912583}
   m_Layer: 5
   m_Name: Private
   m_TagString: Untagged
@@ -1282,20 +1340,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1959912576}
   m_CullTransparentMesh: 1
---- !u!114 &1959912581
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1959912576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9424642a451d4a4aadaccb7d91b1b626, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chatSender: {fileID: 1410659847}
-  chatMode: {fileID: 1959912582}
 --- !u!114 &1959912582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1309,6 +1353,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chatSubmitHandler: {fileID: 306680965}
+  chatManager: {fileID: 83696620}
+--- !u!114 &1959912583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1959912576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ea1837368214f47bd2d568da61e5b34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chatMode: {fileID: 1959912582}
 --- !u!1 &1961510190 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4942514820052518616, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
