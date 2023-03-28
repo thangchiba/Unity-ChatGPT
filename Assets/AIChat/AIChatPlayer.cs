@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace MMORPG.UI.AIChat
 {
-    public class AIChatPlayer : MonoBehaviour,IChatHandler
+    public class AIChatPlayer : MonoBehaviour
     {
         //TODO Add Bark class
         private void OnCollisionEnter(Collision collision)
