@@ -325,7 +325,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23abb24fbbd54f47b0d98b30c23a4b63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chatManager: {fileID: 83696620}
 --- !u!1001 &21070198
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1910,6 +1909,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f71e980e020ab924ebed9a227a648ec8, type: 3}
+--- !u!114 &243607976 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1783842609, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+  m_PrefabInstance: {fileID: 4942514819321283574}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de5ad6e0343d4441a323617090359082, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &246325296
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9459,6 +9469,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4519282631701236, guid: 386f40ad68cdd3c4fbcb471ef2d93772, type: 3}
   m_PrefabInstance: {fileID: 389158988}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1452042273 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1959912582, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+  m_PrefabInstance: {fileID: 4942514819321283574}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 181e8729e08e4cbe973d17519bbb2295, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1458471107 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4586821900076392, guid: ae9772ea62bbc724eb9b8ef81109f733, type: 3}
@@ -9979,7 +10000,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chatStorage: {fileID: 11400000, guid: aee60f3511bee40cc9f14a0d595df1b4, type: 2}
-  chatManager: {fileID: 83696620}
 --- !u!1001 &1515208439
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12774,6 +12794,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4835789832631930, guid: bdf8e7438a7816543998181bd3067573, type: 3}
   m_PrefabInstance: {fileID: 2074320184}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1925719201 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 526808821, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+  m_PrefabInstance: {fileID: 4942514819321283574}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9424642a451d4a4aadaccb7d91b1b626, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1930645385 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4019303215891802, guid: efd8147160aa6c64c8121a2ed788744e, type: 3}
@@ -14278,6 +14309,14 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1410659847, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+      propertyPath: chatMode
+      value: 
+      objectReference: {fileID: 1925719201}
+    - target: {fileID: 1410659847, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+      propertyPath: chatModeContext
+      value: 
+      objectReference: {fileID: 1925719201}
     - target: {fileID: 1783842604, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -14294,6 +14333,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1783842610, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+      propertyPath: chatModeState
+      value: 
+      objectReference: {fileID: 243607976}
     - target: {fileID: 1959912577, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -14309,11 +14352,31 @@ PrefabInstance:
     - target: {fileID: 1959912577, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1959912578, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1959912578, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1959912578, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 83696619}
+    - target: {fileID: 1959912578, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1959912582, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
       propertyPath: chatManager
       value: 
       objectReference: {fileID: 83696620}
+    - target: {fileID: 1959912583, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+      propertyPath: chatModeState
+      value: 
+      objectReference: {fileID: 1452042273}
     - target: {fileID: 4942514819236597232, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

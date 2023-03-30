@@ -1,26 +1,23 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace MMORPG.UI.AIChat
 {
-    [RequireComponent(typeof(ChatMode))]
     public class ButtonChatMode : MonoBehaviour
     {
-        
         private Button button;
-        [SerializeField] private ChatMode chatMode;
-        private ChatModeContext _chatModeContext;
+        [SerializeField] private ChatModeState chatModeState;
 
         public void OnEnable()
         {
             button = GetComponent<Button>();
             button.onClick.AddListener(OnButtonClick);
-            _chatModeContext = GetComponentInParent<ChatModeContext>();
         }
 
         private void OnButtonClick()
         {
-            _chatModeContext.SetChatMode(chatMode);
+            ChatManager.Instance.ChatMode.SetChatMode(chatModeState);
         }
     }
 }

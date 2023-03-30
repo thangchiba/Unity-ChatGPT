@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace MMORPG.UI.AIChat
 {
-    public class GeneralChatMode : ChatMode
+    public class GeneralState : ChatModeState
     {
         public override void SubmitChat(string content)
         {

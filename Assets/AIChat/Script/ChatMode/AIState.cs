@@ -1,12 +1,12 @@
+using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace MMORPG.UI.AIChat
 {
-    public class AIChatMode : ChatMode
+    public class AIState : ChatModeState
     {
         [SerializeField] private GUIChatHandler chatSubmitHandler;
-        [SerializeField] private AIChatManager chatManager;
         
         public override void SubmitChat(string content)
         {
@@ -20,12 +20,13 @@ namespace MMORPG.UI.AIChat
 
         public override void Setup()
         {
-            chatManager.AttachHandler(chatSubmitHandler);
+            ChatManager.Instance.ChatGPT.AttachHandler(chatSubmitHandler);
         }
 
         public override void Uninstall()
         {
-            chatManager.DetachHandler(chatSubmitHandler);
+            if (chatSubmitHandler == null) return;
+            ChatManager.Instance.ChatGPT.DetachHandler(chatSubmitHandler);
         }
     }
 }

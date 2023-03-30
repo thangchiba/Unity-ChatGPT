@@ -11,11 +11,10 @@ namespace MMORPG.UI.AIChat
     {
         public TextMeshProUGUI chatContent;
         public Button submitChat;
-        [SerializeField] private ChatModeContext chatModeContext;
         
         public void SubmitChat()
         {
-            chatModeContext.GetChatMode().SubmitChat(chatContent.text);
+            ChatManager.Instance.ChatMode.CurrentState.SubmitChat(chatContent.text);
         }
     }
 }

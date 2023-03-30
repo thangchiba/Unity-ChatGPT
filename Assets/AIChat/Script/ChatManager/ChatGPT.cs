@@ -1,29 +1,20 @@
+using System;
 using System.Collections;
 using UnityEngine.Networking;
 using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-
 namespace MMORPG.UI.AIChat
 {
-    public class AIChatManager : MonoBehaviour
+    public class ChatGPT : MonoBehaviour
     {
+        
         [SerializeField] private string endPoint = "https://api.openai.com/v1/chat/completions";
-        [SerializeField] private string accessToken = "Bearer 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";
-        private static AIChatManager instance;
+        [SerializeField] private string accessToken = "Bearer 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";
+        [SerializeField] private string accessKey = "freetoken";
         private static List<AIChatHandler> listAIChatHandler = new List<AIChatHandler>();
-        public static AIChatManager Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    instance = new AIChatManager();
-                }
-                return instance;
-            }
-        }
+        
 
         public void AttachHandler(AIChatHandler handler)
         {
@@ -62,6 +53,7 @@ namespace MMORPG.UI.AIChat
                 request.downloadHandler = downloadHandler;
                 request.SetRequestHeader("Content-Type", "application/json");
                 request.SetRequestHeader("Authorization",accessToken);
+                request.SetRequestHeader("AccessKey",accessKey);
                 yield return request.SendWebRequest();
                 if (request.result != UnityWebRequest.Result.Success)
                 {
@@ -138,6 +130,6 @@ namespace MMORPG.UI.AIChat
         public long created;
         public string model;
         public Choice[] choices;
+    
     }
-
 }

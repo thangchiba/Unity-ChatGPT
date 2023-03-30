@@ -2,12 +2,24 @@ using UnityEngine;
 
 namespace MMORPG.UI.AIChat
 {
-    public abstract class ChatMode : MonoBehaviour
+    public class ChatMode : MonoBehaviour
     {
-        public abstract void SubmitChat(string content);
-        public abstract void HandleChat(string content,string sender);
+        public ChatModeState CurrentState { get; private set; }
 
-        public abstract void Setup();
-        public abstract void Uninstall();
+        private void OnEnable()
+        {
+            var defaultChatMode = FindObjectOfType<AIState>();
+            if (defaultChatMode != null)
+            {
+                SetChatMode(defaultChatMode);
+            }
+        }
+
+        public void SetChatMode(ChatModeState chatModeState)
+        {
+            chatModeState.Uninstall();
+            this.CurrentState = chatModeState;
+            chatModeState.Setup();
+        }
     }
 }
