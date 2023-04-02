@@ -1,9 +1,12 @@
+using System;
 using UnityEngine;
 
 namespace MMORPG.UI.AIChat
 {
     public class ChatMode : MonoBehaviour
     {
+        public Action<ChatModeState> OnSetChatMode;
+        
         public ChatModeState CurrentState { get; private set; }
 
         private void OnEnable()
@@ -20,6 +23,7 @@ namespace MMORPG.UI.AIChat
             chatModeState.Uninstall();
             this.CurrentState = chatModeState;
             chatModeState.Setup();
+            OnSetChatMode?.Invoke(chatModeState);
         }
     }
 }
