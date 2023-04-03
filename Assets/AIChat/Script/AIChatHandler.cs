@@ -16,5 +16,6 @@ namespace MMORPG.UI.AIChat
         
         public abstract void OnReceiveResponse(string content);
         public abstract void OnReceiveChunkResponse(string content);
+        public abstract void OnReceiveResponseDone();
     }
 }

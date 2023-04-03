@@ -9,7 +9,6 @@ namespace MMORPG.UI.AIChat
 {
     public class ChatGPT : MonoBehaviour
     {
-        
         [SerializeField] private string endPoint = "https://api.openai.com/v1/chat/completions";
         [SerializeField] private string accessToken = "Bearer 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";
         [SerializeField] private string accessKey = "freetoken";
@@ -59,10 +58,6 @@ namespace MMORPG.UI.AIChat
                 {
                     Debug.Log(request.error);
                 }
-        
-                // var s = request.downloadHandler.deltaContent;
-                //string responseText = downloadHandler.text;
-                //yield return request.downloadedBytes;
             }
         }
         
@@ -85,6 +80,7 @@ namespace MMORPG.UI.AIChat
                         listAIChatHandler.ForEach(x =>
                         {
                             x.OnReceiveResponse(deltaContent);
+                            x.OnReceiveResponseDone();
                         });
                         break;
                     }

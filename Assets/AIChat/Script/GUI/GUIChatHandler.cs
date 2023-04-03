@@ -24,5 +24,10 @@ namespace MMORPG.UI.AIChat
         {
             receiveMessage.SetContent(content);
         }
+
+        public override void OnReceiveResponseDone()
+        {
+            
+        }
     }
 }
