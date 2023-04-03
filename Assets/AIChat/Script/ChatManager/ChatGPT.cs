@@ -12,40 +12,43 @@ namespace MMORPG.UI.AIChat
         [SerializeField] private string endPoint = "https://api.openai.com/v1/chat/completions";
         [SerializeField] private string accessToken = "Bearer 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";
         [SerializeField] private string accessKey = "freetoken";
-        private static List<AIChatHandler> listAIChatHandler = new List<AIChatHandler>();
+        public static List<AIChatController> listAIChatController = new List<AIChatController>();
         
 
-        public void AttachHandler(AIChatHandler handler)
+        public void AttachHandler(AIChatController controller)
         {
-            listAIChatHandler.Add(handler);
+            listAIChatController.Add(controller);
         }
         
-        public void DetachHandler(AIChatHandler handler)
+        public void DetachHandler(AIChatController controller)
         {
-            listAIChatHandler.Remove(handler);
+            listAIChatController.Remove(controller);
         }
         
-        public void Send(AIChatStorage chatStorage)
+        public void Send(string chatContent)
         {
-            var sendMessages = new List<AIMessage>(chatStorage.trains);
-            sendMessages.AddRange(chatStorage.messages.TakeLast(chatStorage.maxSendCount).ToList());
+            listAIChatController.ForEach(chatController =>
+            {
+                chatController.OnSubmitChat(chatContent);
+                StartCoroutine(ChatWithAI(chatController));
+            });
+        }
+        
+        // ReSharper disable Unity.PerformanceAnalysis
+        private IEnumerator ChatWithAI(AIChatController chatController)
+        {
+            var sendMessages = new List<AIMessage>(chatController.chatStorage.trains);
+            sendMessages.AddRange(chatController.chatStorage.messages.TakeLast(chatController.chatStorage.maxSendCount).ToList());
             var requestBody = new AIRequestBody
             {
                 model = "gpt-3.5-turbo",
                 messages = sendMessages,
-                temperature = chatStorage.temperature,
+                temperature = chatController.chatStorage.temperature,
             };
-            StartCoroutine(ChatWithAI(requestBody));
-        }
-        
-        // ReSharper disable Unity.PerformanceAnalysis
-        private IEnumerator ChatWithAI(AIRequestBody requestBody)
-        {
-            // const string url = "https://api.openai.com/v1/chat/completions";
             var bodyJsonString = JsonUtility.ToJson(requestBody);
             var request = new UnityWebRequest(endPoint, "POST");
             var bodyRaw = Encoding.UTF8.GetBytes(bodyJsonString);
-            DownloadHandlerScript downloadHandler = new HandleChunkResponse();
+            DownloadHandlerScript downloadHandler = new HandleChunkResponse(chatController);
             using (request)
             {
                 request.uploadHandler = (UploadHandler)new UploadHandlerRaw(bodyRaw);
@@ -65,6 +68,12 @@ namespace MMORPG.UI.AIChat
         {
             private string deltaContent = "";
             private string dataString = "";
+            private AIChatController chatController;
+
+            public HandleChunkResponse(AIChatController chatController)
+            {
+                this.chatController = chatController;
+            }
         
             protected override bool ReceiveData(byte[] data, int dataLength)
             {
@@ -77,11 +86,7 @@ namespace MMORPG.UI.AIChat
                     {
                         // call the callback function with an empty string to indicate that the response is complete
                         Debug.Log("Done");
-                        listAIChatHandler.ForEach(x =>
-                        {
-                            x.OnReceiveResponse(deltaContent);
-                            x.OnReceiveResponseDone();
-                        });
+                        chatController.OnReceiveResponse(deltaContent);
                         break;
                     }
         
@@ -91,10 +96,7 @@ namespace MMORPG.UI.AIChat
                     {
                         if (choice.delta == null || string.IsNullOrEmpty(choice.delta.content)) continue;
                         deltaContent += choice.delta.content;
-                        listAIChatHandler.ForEach(x =>
-                        {
-                            x.OnReceiveChunkResponse(deltaContent);
-                        });
+                        chatController.OnReceiveChunkResponse(deltaContent);
                         break; // only consider the first delta with content field
                     }
                 }

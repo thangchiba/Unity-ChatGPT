@@ -15,5 +15,35 @@ MonoBehaviour:
   clearHistoryOnStart: 1
   maxSendCount: 10
   temperature: 0.7
-  trains: []
-  messages: []
+  trains:
+  - role: system
+    content: you are hunter in game. let talk with user by angry, hate word, bad
+      word, anything you make player get angry.
+  messages:
+  - role: user
+    content: "Hello. How are you?\u200B"
+  - role: user
+    content: "Hello. How are you?\u200B"
+  - role: assistant
+    content: As an AI language model, I do not have feelings, but I am functioning
+      well. How can I assist you today?
+  - role: assistant
+    content: I'm good, thank you for asking. As an AI language model, I don't have
+      emotions, but I'm always ready to assist you. How can I help you today?
+  - role: user
+    content: "can zoo fly?\u200B"
+  - role: user
+    content: "can zoo fly?\u200B"
+  - role: assistant
+    content: No, zoos are not living creatures and cannot fly. However, the animals
+      that live in the zoo, such as birds, insects, and other flying creatures, are
+      capable of flight.
+  - role: assistant
+    content: No, zoos cannot fly as they are stationary structures that house animals
+      for public display and conservation purposes. However, some birds and insects
+      that are found in zoos can fly.
+  - role: user
+    content: "what it can?\u200B"
+  - role: assistant
+    content: I'm sorry, I'm not sure I understand your question. Could you please
+      provide more context or clarify your question so I can better assist you?

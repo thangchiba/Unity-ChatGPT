@@ -10,11 +10,10 @@ namespace MMORPG.UI.AIChat
     public class ChatSender : MonoBehaviour
     {
         public TextMeshProUGUI chatContent;
-        public Button submitChat;
         
         public void SubmitChat()
         {
-            ChatManager.Instance.ChatMode.CurrentState.SubmitChat(chatContent.text);
+            ChatManager.Instance.ChatGPT.Send(chatContent.text);
         }
     }
 }
