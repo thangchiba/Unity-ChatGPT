@@ -24,6 +24,11 @@ namespace MMORPG.UI.AIChat
         {
             listAIChatController.Remove(controller);
         }
+
+        public void ResetHandler()
+        {
+            listAIChatController = new List<AIChatController>();
+        }
         
         public void Send(string chatContent)
         {

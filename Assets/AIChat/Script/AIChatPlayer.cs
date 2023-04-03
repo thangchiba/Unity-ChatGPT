@@ -1,11 +1,24 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace MMORPG.UI.AIChat
 {
     public class AIChatPlayer : MonoBehaviour
     {
-        //TODO Add Bark class
+        [SerializeField] private BarkController barkController;
+        [SerializeField] private SphereCollider collider;
+        
+        public void Bark(string content)
+        {
+            barkController.SetBark(content);
+        }
+
+        public void SetEnableTrigger(bool enableTrigger)
+        {
+            collider.enabled = enableTrigger;
+        }
+        
         private void OnTriggerEnter(Collider other)
         {
             var npcChat = other.GetComponent<NpcChatController>();
@@ -25,10 +38,5 @@ namespace MMORPG.UI.AIChat
             }
         }
 
-        public void OnChatSubmit()
-        {
-            //Handle event when chat submitted
-            throw new System.NotImplementedException();
-        }
     }
 }

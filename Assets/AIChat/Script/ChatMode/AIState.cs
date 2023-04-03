@@ -12,11 +12,5 @@ namespace MMORPG.UI.AIChat
         {
             ChatManager.Instance.ChatGPT.AttachHandler(chatSubmitController);
         }
-
-        public override void Uninstall()
-        {
-            if (chatSubmitController == null) return;
-            ChatManager.Instance.ChatGPT.DetachHandler(chatSubmitController);
-        }
     }
 }
