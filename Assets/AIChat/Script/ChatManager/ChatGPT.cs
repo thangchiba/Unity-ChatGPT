@@ -12,7 +12,7 @@ namespace MMORPG.UI.AIChat
         [SerializeField] private string endPoint = "https://api.openai.com/v1/chat/completions";
         [SerializeField] private string accessToken = "Bearer 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";
         [SerializeField] private string accessKey = "freetoken";
-        public static List<AIChatController> listAIChatController = new List<AIChatController>();
+        private List<AIChatController> listAIChatController = new List<AIChatController>();
         
 
         public void AttachHandler(AIChatController controller)
@@ -89,8 +89,6 @@ namespace MMORPG.UI.AIChat
                 {
                     if (response.Trim() == "[DONE]")
                     {
-                        // call the callback function with an empty string to indicate that the response is complete
-                        Debug.Log("Done");
                         chatController.OnReceiveResponse(deltaContent);
                         break;
                     }

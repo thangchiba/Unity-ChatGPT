@@ -9,7 +9,7 @@ namespace MMORPG.UI.AIChat
         private Button button;
         [SerializeField] private ChatModeState chatModeState;
 
-        public void OnEnable()
+        public void Awake()
         {
             button = GetComponent<Button>();
             button.onClick.AddListener(OnButtonClick);

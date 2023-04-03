@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace MMORPG.UI.AIChat
 {
@@ -20,9 +21,9 @@ namespace MMORPG.UI.AIChat
 
         public void SetChatMode(ChatModeState chatModeState)
         {
-            chatModeState.Uninstall();
-            this.CurrentState = chatModeState;
-            chatModeState.Setup();
+            CurrentState?.Uninstall();
+            CurrentState = chatModeState;
+            CurrentState.Setup();
             OnSetChatMode?.Invoke(chatModeState);
         }
     }

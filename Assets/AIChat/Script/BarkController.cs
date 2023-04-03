@@ -27,6 +27,8 @@ namespace MMORPG.UI.AIChat
             if(!chatBubble.activeSelf)
                 chatBubble.SetActive(true);
             barkContent.text = content;
+            CancelInvoke(nameof(HideBark));
+            Invoke(nameof(HideBark),5f);
         }
     }
 }

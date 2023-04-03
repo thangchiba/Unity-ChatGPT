@@ -34,7 +34,7 @@ RectTransform:
   - {fileID: 1959912577}
   - {fileID: 1783842604}
   m_Father: {fileID: 4942514820052518617}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -501,6 +501,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de5ad6e0343d4441a323617090359082, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chatSender: {fileID: 0}
+  aiChatPlayer: {fileID: 0}
 --- !u!114 &1783842610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -513,7 +515,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ea1837368214f47bd2d568da61e5b34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chatMode: {fileID: 1783842609}
+  chatModeState: {fileID: 0}
 --- !u!1 &1959912576
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,8 +652,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 181e8729e08e4cbe973d17519bbb2295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chatSubmitHandler: {fileID: 306680965}
-  chatManager: {fileID: 0}
+  chatLog: {fileID: 0}
 --- !u!114 &1959912583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -664,7 +665,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ea1837368214f47bd2d568da61e5b34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chatMode: {fileID: 1959912582}
+  chatModeState: {fileID: 0}
 --- !u!1 &4942514819032104176
 GameObject:
   m_ObjectHideFlags: 0
@@ -836,7 +837,7 @@ RectTransform:
   - {fileID: 4942514820572500529}
   - {fileID: 4942514819772968613}
   m_Father: {fileID: 4942514820052518617}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -924,7 +925,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chatStorage: {fileID: 11400000, guid: 4e4b5a610a96b4de8b344b02557fb501, type: 2}
-  chatManager: {fileID: 0}
   frameChat: {fileID: 6141190128373907571}
 --- !u!1 &4942514819186768665
 GameObject:
@@ -1466,7 +1466,7 @@ RectTransform:
   - {fileID: 4942514820676696154}
   - {fileID: 4942514819610176286}
   m_Father: {fileID: 4942514820052518617}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -1486,8 +1486,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chatContent: {fileID: 4942514820532772742}
-  submitChat: {fileID: 4942514819610176287}
-  toggleChatMode: {fileID: 526808821}
 --- !u!1 &4942514820052518616
 GameObject:
   m_ObjectHideFlags: 0
@@ -1516,9 +1514,9 @@ RectTransform:
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 526808818}
   - {fileID: 4942514819228614022}
   - {fileID: 4942514819961918422}
-  - {fileID: 526808818}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2490,19 +2488,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 9096941867499666478, guid: ddc63e5ad579f401e901e61bb0d9197c, type: 3}
   m_PrefabInstance: {fileID: 4227054193453556351}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6141190128373907571
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4942514820108639825}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24ffccb08a6214387b53f4355129ffb5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  messagePrefab: {fileID: 2679869446230407478, guid: 3efb9738fd570439488c3e0e621e7b40, type: 3}
 --- !u!114 &329266771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2517,6 +2502,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 1
+--- !u!114 &6141190128373907571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4942514820108639825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24ffccb08a6214387b53f4355129ffb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  messagePrefab: {fileID: 2679869446230407478, guid: 3efb9738fd570439488c3e0e621e7b40, type: 3}
 --- !u!224 &4942514820108639838 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 9096941867499666465, guid: ddc63e5ad579f401e901e61bb0d9197c, type: 3}
