@@ -10,7 +10,7 @@ namespace MMORPG.UI.AIChat
     public class AIChatStorage : ScriptableObject
     {
         public bool clearHistoryOnStart = true;
-        public int maxSendCount = 10;
+        [Range(0, 10)] public int maxSendCount = 6;
         [Range(0f, 2f)] public float temperature = 0.7f;
         public List<AIMessage> trains;
         public List<AIMessage> messages;

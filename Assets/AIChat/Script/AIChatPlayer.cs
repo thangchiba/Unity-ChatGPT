@@ -4,11 +4,31 @@ using UnityEngine;
 
 namespace MMORPG.UI.AIChat
 {
+    [RequireComponent(typeof(SphereCollider))]
+    [RequireComponent(typeof(BarkController))]
     public class AIChatPlayer : MonoBehaviour
     {
-        [SerializeField] private BarkController barkController;
-        [SerializeField] private SphereCollider collider;
+        private BarkController barkController;
+        private SphereCollider collider;
+        private List<AIChatController> listAIChatController;
+
+        private void Awake()
+        {
+            collider = GetComponent<SphereCollider>();
+            barkController = GetComponent<BarkController>();
+            listAIChatController = new List<AIChatController>();
+        }
+
+        public List<AIChatController> GetListHandler()
+        {
+            return listAIChatController;
+        }
         
+        public void ResetHandler()
+        {
+            listAIChatController = new List<AIChatController>();
+        }
+
         public void Bark(string content)
         {
             barkController.SetBark(content);
@@ -25,7 +45,7 @@ namespace MMORPG.UI.AIChat
             if (npcChat != null)
             {
                 Debug.Log("Triggered with "+other.gameObject.name);
-                ChatManager.Instance.ChatGPT.AttachHandler(npcChat);
+                listAIChatController.Add(npcChat);
             }
         }
         private void OnTriggerExit(Collider other)
@@ -34,7 +54,7 @@ namespace MMORPG.UI.AIChat
             if (npcChat != null)
             {
                 Debug.Log("Exit trigger with "+other.gameObject.name);
-                ChatManager.Instance.ChatGPT.DetachHandler(npcChat);
+                listAIChatController.Remove(npcChat);
             }
         }
 

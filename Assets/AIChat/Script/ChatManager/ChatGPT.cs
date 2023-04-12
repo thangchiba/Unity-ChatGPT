@@ -12,48 +12,27 @@ namespace MMORPG.UI.AIChat
         [SerializeField] private string endPoint = "https://api.openai.com/v1/chat/completions";
         [SerializeField] private string accessToken = "Bearer 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";
         [SerializeField] private string accessKey = "freetoken";
-        private List<AIChatController> listAIChatController = new List<AIChatController>();
-        
-
-        public void AttachHandler(AIChatController controller)
+        public void Send(string chatContent, AIChatController controller)
         {
-            listAIChatController.Add(controller);
-        }
-        
-        public void DetachHandler(AIChatController controller)
-        {
-            listAIChatController.Remove(controller);
-        }
-
-        public void ResetHandler()
-        {
-            listAIChatController = new List<AIChatController>();
-        }
-        
-        public void Send(string chatContent)
-        {
-            listAIChatController.ForEach(chatController =>
-            {
-                chatController.OnSubmitChat(chatContent);
-                StartCoroutine(ChatWithAI(chatController));
-            });
+            controller.OnSubmitChat(chatContent);
+            StartCoroutine(ChatWithAI(controller));
         }
         
         // ReSharper disable Unity.PerformanceAnalysis
-        private IEnumerator ChatWithAI(AIChatController chatController)
+        private IEnumerator ChatWithAI(AIChatController controller)
         {
-            var sendMessages = new List<AIMessage>(chatController.chatStorage.trains);
-            sendMessages.AddRange(chatController.chatStorage.messages.TakeLast(chatController.chatStorage.maxSendCount).ToList());
+            var sendMessages = new List<AIMessage>(controller.chatStorage.trains);
+            sendMessages.AddRange(controller.chatStorage.messages.TakeLast(controller.chatStorage.maxSendCount).ToList());
             var requestBody = new AIRequestBody
             {
                 model = "gpt-3.5-turbo",
                 messages = sendMessages,
-                temperature = chatController.chatStorage.temperature,
+                temperature = controller.chatStorage.temperature,
             };
             var bodyJsonString = JsonUtility.ToJson(requestBody);
             var request = new UnityWebRequest(endPoint, "POST");
             var bodyRaw = Encoding.UTF8.GetBytes(bodyJsonString);
-            DownloadHandlerScript downloadHandler = new HandleChunkResponse(chatController);
+            DownloadHandlerScript downloadHandler = new HandleChunkResponse(controller);
             using (request)
             {
                 request.uploadHandler = (UploadHandler)new UploadHandlerRaw(bodyRaw);
@@ -73,11 +52,11 @@ namespace MMORPG.UI.AIChat
         {
             private string deltaContent = "";
             private string dataString = "";
-            private AIChatController chatController;
+            private AIChatController controller;
 
-            public HandleChunkResponse(AIChatController chatController)
+            public HandleChunkResponse(AIChatController controller)
             {
-                this.chatController = chatController;
+                this.controller = controller;
             }
         
             protected override bool ReceiveData(byte[] data, int dataLength)
@@ -89,7 +68,7 @@ namespace MMORPG.UI.AIChat
                 {
                     if (response.Trim() == "[DONE]")
                     {
-                        chatController.OnReceiveResponse(deltaContent);
+                        controller.OnReceiveResponse(deltaContent);
                         break;
                     }
         
@@ -99,7 +78,7 @@ namespace MMORPG.UI.AIChat
                     {
                         if (choice.delta == null || string.IsNullOrEmpty(choice.delta.content)) continue;
                         deltaContent += choice.delta.content;
-                        chatController.OnReceiveChunkResponse(deltaContent);
+                        controller.OnReceiveChunkResponse(deltaContent);
                         break; // only consider the first delta with content field
                     }
                 }

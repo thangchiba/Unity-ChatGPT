@@ -10,20 +10,11 @@ namespace MMORPG.UI.AIChat
         
         public ChatModeState CurrentState { get; private set; }
 
-        private void OnEnable()
-        {
-            var defaultChatMode = FindObjectOfType<AIState>();
-            if (defaultChatMode != null)
-            {
-                SetChatMode(defaultChatMode);
-            }
-        }
-
         public void SetChatMode(ChatModeState chatModeState)
         {
-            CurrentState?.Uninstall();
+            CurrentState?.OnUninstall();
             CurrentState = chatModeState;
-            CurrentState.Setup();
+            CurrentState.OnSetup();
             OnSetChatMode?.Invoke(chatModeState);
         }
     }

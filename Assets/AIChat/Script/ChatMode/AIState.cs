@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace MMORPG.UI.AIChat
 {
@@ -14,17 +12,20 @@ namespace MMORPG.UI.AIChat
             guiChatController = chatLog.GetComponent<GUIChatController>();
         }
 
-        public override void Setup()
+        public override void OnSetup()
         {
+            Debug.Log("setup ai state");
             chatLog.SetActive(true);
-            ChatManager.Instance.ChatGPT.AttachHandler(guiChatController);
         }
         
-        public override void Uninstall()
+        public override void OnUninstall()
         {
-            Debug.Log("Unistall ai state");
-            base.Uninstall();
             chatLog.SetActive(false);
+        }
+
+        public override void SubmitChat(string content)
+        {
+            ChatManager.Instance.ChatGPT.Send(content, guiChatController);
         }
     }
 }

@@ -9,7 +9,7 @@ namespace MMORPG.UI.AIChat
 
         public override void OnSubmitChat(string content)
         {
-            base.OnSubmitChat(content);
+            AddMessage(Role.user,content);
             frameChat.AddChatMessage(content, "user");
             chunkMessage = frameChat.AddChatMessage("", "assistant");
         }

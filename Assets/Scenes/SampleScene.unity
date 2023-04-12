@@ -13265,17 +13265,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4835789832631930, guid: bdf8e7438a7816543998181bd3067573, type: 3}
   m_PrefabInstance: {fileID: 2074320184}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1925719201 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 526808821, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
-  m_PrefabInstance: {fileID: 4942514819321283574}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9424642a451d4a4aadaccb7d91b1b626, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1930645385 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4019303215891802, guid: efd8147160aa6c64c8121a2ed788744e, type: 3}
@@ -14986,6 +14975,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4236207342151178005, guid: ae1bb896311694e8a9866ff2d9430d6a, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6601990629744016759, guid: ae1bb896311694e8a9866ff2d9430d6a, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
@@ -15047,10 +15040,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 526808821, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+      propertyPath: chatSender
+      value: 
+      objectReference: {fileID: 487938653}
     - target: {fileID: 1410659847, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
       propertyPath: chatMode
       value: 
-      objectReference: {fileID: 1925719201}
+      objectReference: {fileID: 0}
     - target: {fileID: 1410659847, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
       propertyPath: chatContent
       value: 
@@ -15058,7 +15055,7 @@ PrefabInstance:
     - target: {fileID: 1410659847, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
       propertyPath: chatModeContext
       value: 
-      objectReference: {fileID: 1925719201}
+      objectReference: {fileID: 0}
     - target: {fileID: 1783842604, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -15243,6 +15240,22 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4942514819610176287, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942514819610176287, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 487938653}
+    - target: {fileID: 4942514819610176287, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SubmitChat
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942514819610176287, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MMORPG.UI.AIChat.ChatSender, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 4942514819772968613, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -15379,6 +15392,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4942514820532772742, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+      propertyPath: m_text
+      value: "\u200B"
+      objectReference: {fileID: 0}
     - target: {fileID: 4942514820572500529, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -15399,5 +15416,6 @@ PrefabInstance:
       propertyPath: m_Text
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 526808821, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}

@@ -10,8 +10,19 @@ namespace MMORPG.UI.AIChat
     public class ChatSender : MonoBehaviour
     {
         public TMP_InputField chatContent;
-        public Action<string> OnSubmitChat;
         [SerializeField] KeyCode submitKey = KeyCode.Return;
+        
+        private List<IChatHandler> listHandler = new List<IChatHandler>();
+        
+        public void AttachHandler(IChatHandler handler)
+        {
+            listHandler.Add(handler);
+        }
+        
+        public void DetachHandler(IChatHandler handler)
+        {
+            listHandler.Remove(handler);
+        }
         
         // Update is called once per frame
         void Update()
@@ -23,9 +34,10 @@ namespace MMORPG.UI.AIChat
         }
         public void SubmitChat()
         {
-            if (chatContent.text.Trim() == "") return; 
-            ChatManager.Instance.ChatGPT.Send(chatContent.text);
-            OnSubmitChat?.Invoke(chatContent.text);
+            string content = chatContent.text.Trim();
+            if (content == "") return; 
+            listHandler.ForEach(handler=>handler.OnChatSubmit(content));
+            ChatManager.Instance.SubmitChat(content);
             chatContent.text = "";
             chatContent.Select();
         }

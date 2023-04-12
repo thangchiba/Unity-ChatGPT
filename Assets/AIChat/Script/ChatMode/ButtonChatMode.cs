@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 namespace MMORPG.UI.AIChat
 {
+    [RequireComponent(typeof(Button))]
     public class ButtonChatMode : MonoBehaviour
     {
         private Button button;

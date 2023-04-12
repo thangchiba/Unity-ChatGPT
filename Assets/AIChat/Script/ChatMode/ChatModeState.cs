@@ -4,11 +4,10 @@ namespace MMORPG.UI.AIChat
 {
     public abstract class ChatModeState : MonoBehaviour
     {
-        public abstract void Setup();
+        public abstract void OnSetup();
 
-        public virtual void Uninstall()
-        {
-            ChatManager.Instance.ChatGPT.ResetHandler();
-        }
+        public abstract void OnUninstall();
+
+        public abstract void SubmitChat(string content);
     }
 }

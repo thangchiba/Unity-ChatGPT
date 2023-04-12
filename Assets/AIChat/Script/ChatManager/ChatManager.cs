@@ -1,10 +1,3 @@
-using System;
-using System.Collections;
-using UnityEngine.Networking;
-using System.Text;
-using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace MMORPG.UI.AIChat
@@ -25,8 +18,22 @@ namespace MMORPG.UI.AIChat
                 Instance = this;
                 ChatGPT = gameObject.AddComponent<ChatGPT>();
                 ChatMode = gameObject.AddComponent<ChatMode>();
+                SetupDefaultChatMode();
             }
         }
 
+        private void SetupDefaultChatMode()
+        {
+            var defaultChatMode = FindObjectOfType<AIState>();
+            if (defaultChatMode != null && ChatMode.CurrentState == null)
+            {
+                ChatMode.SetChatMode(defaultChatMode);
+            }
+        }
+
+        public void SubmitChat(string content)
+        {
+            ChatMode.CurrentState.SubmitChat(content);
+        }
     }
 }
