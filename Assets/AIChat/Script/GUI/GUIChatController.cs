@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace MMORPG.UI.AIChat
 {
     public class GUIChatController : AIChatController
     {
+        [SerializeField] private ScrollRect scrollRect;
         [SerializeField] private Frame frameChat;
         private Message chunkMessage;
 
@@ -17,6 +19,14 @@ namespace MMORPG.UI.AIChat
         public override void OnReceiveChunkResponse(string content)
         {
             chunkMessage.SetContent(content);
+            ScrollToBottom();
+        }
+
+
+        private void ScrollToBottom()
+        {
+            // Set the vertical normalized position to 0
+            scrollRect.verticalNormalizedPosition = 0f;
         }
     }
 }
