@@ -5,7 +5,6 @@ using UnityEngine;
 namespace MMORPG.UI.AIChat
 {
     [RequireComponent(typeof(SphereCollider))]
-    [RequireComponent(typeof(BarkController))]
     public class AIChatPlayer : MonoBehaviour
     {
         private BarkController barkController;
@@ -15,7 +14,7 @@ namespace MMORPG.UI.AIChat
         private void Awake()
         {
             collider = GetComponent<SphereCollider>();
-            barkController = GetComponent<BarkController>();
+            barkController = GetComponentInChildren<BarkController>();
             listAIChatController = new List<AIChatController>();
         }
 

@@ -1,5 +1,3 @@
-using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace MMORPG.UI.AIChat
@@ -8,7 +6,7 @@ namespace MMORPG.UI.AIChat
     {
         public AIChatStorage chatStorage;
 
-        protected virtual void AddMessage(Role role, string content)
+        protected void AddMessage(Role role, string content)
         {
             chatStorage.messages.Add(new AIMessage(role,content));
         }

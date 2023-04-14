@@ -2,33 +2,28 @@ using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace MMORPG.UI.AIChat
 {
     public class BarkController : MonoBehaviour
     {
-        [SerializeField] GameObject chatBubble;
+        [SerializeField] GameObject barkBox;
         [SerializeField] private TextMeshProUGUI barkContent;
-
-        private void OnEnable()
-        {
-            SetBark("This is bark");
-        }
+        [Range(1f,10f)] public float hideAfterSeconds = 5f;
         
         public void HideBark()
         {
-            // var showTime = minShowTime + content.Length * (1 / 60f);
-            //     if (showTime > maxShowTime) showTime = 15f;
-            chatBubble.SetActive(false);
+            barkBox.SetActive(false);
         }
 
         public void SetBark(string content)
         {
-            if(!chatBubble.activeSelf)
-                chatBubble.SetActive(true);
+            if(!barkBox.activeSelf)
+                barkBox.SetActive(true);
             barkContent.text = content;
             CancelInvoke(nameof(HideBark));
-            Invoke(nameof(HideBark),5f);
+            Invoke(nameof(HideBark),hideAfterSeconds);
         }
     }
 }
