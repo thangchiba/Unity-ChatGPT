@@ -5,6 +5,8 @@ using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
+
 namespace MMORPG.UI.AIChat
 {
     public class ChatGPT : MonoBehaviour
@@ -12,6 +14,7 @@ namespace MMORPG.UI.AIChat
         [SerializeField] private string endPoint = "https://api.openai.com/v1/chat/completions";
         [SerializeField] private string accessToken = "Bearer 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";
         [SerializeField] private string accessKey = "freetoken";
+        [SerializeField] private EGPTModel egptModel = EGPTModel.GPT35Turbo;
         public void Send(string chatContent, AIChatController controller)
         {
             controller.OnSubmitChat(chatContent);
@@ -25,7 +28,7 @@ namespace MMORPG.UI.AIChat
             sendMessages.AddRange(controller.chatStorage.messages.TakeLast(controller.chatStorage.maxSendCount).ToList());
             var requestBody = new AIRequestBody
             {
-                model = "gpt-3.5-turbo",
+                model = GetModelName(egptModel),
                 messages = sendMessages,
                 temperature = controller.chatStorage.temperature,
             };
@@ -83,6 +86,19 @@ namespace MMORPG.UI.AIChat
                     }
                 }
                 return base.ReceiveData(data, dataLength);
+            }
+        }
+        
+        string GetModelName(EGPTModel model)
+        {
+            switch (model)
+            {
+                case EGPTModel.GPT35Turbo:
+                    return "gpt-3.5-turbo";
+                case EGPTModel.GPT4:
+                    return "gpt-4";
+                default:
+                    throw new System.ArgumentOutOfRangeException("Invalid GPTModel value");
             }
         }
     }

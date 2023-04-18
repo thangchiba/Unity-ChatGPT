@@ -2,6 +2,8 @@ using UnityEngine;
 
 namespace MMORPG.UI.AIChat
 {
+    [RequireComponent(typeof(ChatGPT))]
+    [RequireComponent(typeof(ChatMode))]
     public class ChatManager : MonoBehaviour
     {
         public static ChatManager Instance { get; private set; }
@@ -16,18 +18,9 @@ namespace MMORPG.UI.AIChat
             else
             {
                 Instance = this;
-                ChatGPT = gameObject.AddComponent<ChatGPT>();
-                ChatMode = gameObject.AddComponent<ChatMode>();
-                SetupDefaultChatMode();
-            }
-        }
-
-        private void SetupDefaultChatMode()
-        {
-            var defaultChatMode = FindObjectOfType<AIState>();
-            if (defaultChatMode != null && ChatMode.CurrentState == null)
-            {
-                ChatMode.SetChatMode(defaultChatMode);
+                ChatGPT = GetComponent<ChatGPT>();
+                ChatMode = GetComponent<ChatMode>();
+                DontDestroyOnLoad(this.gameObject);
             }
         }
 

@@ -651,7 +651,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 83696621}
-  - component: {fileID: 83696620}
+  - component: {fileID: 83696624}
+  - component: {fileID: 83696623}
+  - component: {fileID: 83696622}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -659,18 +661,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &83696620
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 83696619}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 644aa703c3654fe4865fabbb417f9fdb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &83696621
 Transform:
   m_ObjectHideFlags: 0
@@ -686,6 +676,46 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &83696622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 83696619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 644aa703c3654fe4865fabbb417f9fdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &83696623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 83696619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9424642a451d4a4aadaccb7d91b1b626, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &83696624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 83696619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fbede49627a4a14ac4b9c20651c98a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  endPoint: https://api.thangchiba.com/ai/api/v1/chat
+  accessToken: Bearer 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
+  accessKey: freetoken
+  egptModel: 0
 --- !u!1001 &84757635
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14985,7 +15015,7 @@ PrefabInstance:
     - target: {fileID: 306680965, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
       propertyPath: chatManager
       value: 
-      objectReference: {fileID: 83696620}
+      objectReference: {fileID: 0}
     - target: {fileID: 526808818, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -15177,7 +15207,7 @@ PrefabInstance:
     - target: {fileID: 1959912582, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
       propertyPath: chatManager
       value: 
-      objectReference: {fileID: 83696620}
+      objectReference: {fileID: 0}
     - target: {fileID: 1959912582, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
       propertyPath: chatSubmitController
       value: 

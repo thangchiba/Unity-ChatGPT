@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 namespace MMORPG.UI.AIChat
 {
+    [RequireComponent(typeof(ScrollRect))]
     public class GUIChatController : AIChatController
     {
         [SerializeField] private ScrollRect scrollRect;
