@@ -14,7 +14,6 @@ namespace MMORPG.UI.AIChat
 
         public override void OnSetup()
         {
-            Debug.Log("setup ai state");
             chatLog.SetActive(true);
         }
         

@@ -1,35 +1,39 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.Events;
 
 namespace MMORPG.UI.AIChat
 {
     public class ChatMode : MonoBehaviour
     {
-        public Action<ChatModeState> OnSetChatMode;
-        
+        [SerializeField] private List<SChatMode> listChatMode;
+        public UnityEvent<SChatMode> OnSetChatMode;
+
         public ChatModeState CurrentState { get; private set; }
 
-        private void Awake()
+        private void Start()
         {
             SetupDefaultChatMode();
         }
 
-        public void SetChatMode(ChatModeState chatModeState)
+        public void SetChatMode(EChatMode eChatMode)
         {
             CurrentState?.OnUninstall();
-            CurrentState = chatModeState;
+            var sChatMode = GetChatMode(eChatMode);
+            CurrentState = sChatMode.chatState;
             CurrentState.OnSetup();
-            OnSetChatMode?.Invoke(chatModeState);
+            OnSetChatMode?.Invoke(sChatMode);
+        }
+
+        private SChatMode GetChatMode(EChatMode eChatMode)
+        {
+            return listChatMode.Find(x => x.eChatMode == eChatMode);
         }
 
         private void SetupDefaultChatMode()
         {
-            var defaultChatMode = FindObjectOfType<AIState>();
-            if (defaultChatMode != null && CurrentState == null)
-            {
-                SetChatMode(defaultChatMode);
-            }
+            SetChatMode(listChatMode[0].eChatMode);
         }
     }
 }

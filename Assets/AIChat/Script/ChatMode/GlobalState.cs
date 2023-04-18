@@ -2,12 +2,11 @@ using UnityEngine;
 
 namespace MMORPG.UI.AIChat
 {
-    public class GeneralState : ChatModeState
+    public class GlobalState : ChatModeState
     {
         [SerializeField] private AIChatPlayer aiChatPlayer;
         public override void OnSetup()
         {
-            Debug.Log("setup general state");
             aiChatPlayer.SetEnableTrigger(true);
         }
 
@@ -17,7 +16,7 @@ namespace MMORPG.UI.AIChat
             aiChatPlayer.SetEnableTrigger(false);
         }
 
-        public void PlayerBark(string content)
+        private void PlayerBark(string content)
         {
             aiChatPlayer.Bark(content);
         }

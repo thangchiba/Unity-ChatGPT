@@ -30,7 +30,7 @@ namespace MMORPG.UI.AIChat
 
         public void Bark(string content)
         {
-            barkController.SetBark(content);
+            barkController?.SetBark(content);
         }
 
         public void SetEnableTrigger(bool enableTrigger)
@@ -43,7 +43,6 @@ namespace MMORPG.UI.AIChat
             var npcChat = other.GetComponent<NpcChatController>();
             if (npcChat != null)
             {
-                Debug.Log("Triggered with "+other.gameObject.name);
                 listAIChatController.Add(npcChat);
             }
         }
@@ -52,7 +51,6 @@ namespace MMORPG.UI.AIChat
             var npcChat = other.GetComponent<NpcChatController>();
             if (npcChat != null)
             {
-                Debug.Log("Exit trigger with "+other.gameObject.name);
                 listAIChatController.Remove(npcChat);
             }
         }

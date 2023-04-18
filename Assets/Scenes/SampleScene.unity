@@ -700,6 +700,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9424642a451d4a4aadaccb7d91b1b626, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  listChatMode:
+  - eChatMode: 0
+    chatState: {fileID: 1452042273}
+  - eChatMode: 1
+    chatState: {fileID: 243607976}
+  OnSetChatMode:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 874624458}
+        m_TargetAssemblyTypeName: TMPro.TMP_InputField, Unity.TextMeshPro
+        m_MethodName: ActivateInputField
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &83696624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15141,9 +15161,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 19895881}
     - target: {fileID: 1783842610, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
+      propertyPath: chatMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1783842610, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
       propertyPath: chatModeState
       value: 
-      objectReference: {fileID: 243607976}
+      objectReference: {fileID: 0}
     - target: {fileID: 1959912577, guid: 7348e600e90d54631b79faf91c2edc60, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

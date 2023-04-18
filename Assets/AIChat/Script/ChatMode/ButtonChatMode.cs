@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace MMORPG.UI.AIChat
@@ -8,17 +7,30 @@ namespace MMORPG.UI.AIChat
     public class ButtonChatMode : MonoBehaviour
     {
         private Button button;
-        [SerializeField] private ChatModeState chatModeState;
+        [SerializeField] private EChatMode chatMode;
 
-        public void Awake()
+        public void Start()
         {
             button = GetComponent<Button>();
             button.onClick.AddListener(OnButtonClick);
+            ChatManager.Instance.ChatMode.OnSetChatMode.AddListener(HandleChangeChatMode);
+        }
+
+        private void HandleChangeChatMode(SChatMode sChatMode)
+        {
+            if (sChatMode.eChatMode == chatMode)
+            {
+                button.GetComponent<Image>().color = Color.green;
+            }
+            else
+            {
+                button.GetComponent<Image>().color = Color.grey;
+            }
         }
 
         private void OnButtonClick()
         {
-            ChatManager.Instance.ChatMode.SetChatMode(chatModeState);
+            ChatManager.Instance.ChatMode.SetChatMode(chatMode);
         }
     }
 }

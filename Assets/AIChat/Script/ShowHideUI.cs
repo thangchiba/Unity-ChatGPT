@@ -8,8 +8,8 @@ namespace MMORPG.UI
         [SerializeField] KeyCode showKey = KeyCode.Return;
         [SerializeField] KeyCode hideKey = KeyCode.Escape;
         [SerializeField] GameObject uiContainer;
-        [SerializeField] UnityEvent onShow = null;
-        [SerializeField] UnityEvent onHide = null;
+        [SerializeField] UnityEvent onShow;
+        [SerializeField] UnityEvent onHide;
 
         // Start is called before the first frame update
         void Start()
