@@ -8,4 +8,5 @@ public class AIRequestBody
     public List<AIMessage> messages;
     public bool stream = true;
     public float temperature = 0.7f;
+    public int max_tokens = 100;
 }

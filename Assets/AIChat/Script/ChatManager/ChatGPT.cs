@@ -31,6 +31,7 @@ namespace MMORPG.UI.AIChat
                 model = GetModelName(egptModel),
                 messages = sendMessages,
                 temperature = controller.chatStorage.temperature,
+                max_tokens = controller.chatStorage.maxTokens
             };
             var bodyJsonString = JsonUtility.ToJson(requestBody);
             var request = new UnityWebRequest(endPoint, "POST");
