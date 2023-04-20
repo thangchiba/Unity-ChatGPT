@@ -1,31 +1,57 @@
 using System;
 using System.Collections;
-using UnityEngine.Networking;
-using System.Text;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using UnityEngine;
-using UnityEngine.Serialization;
+using UnityEngine.Networking;
 
 namespace MMORPG.UI.AIChat
 {
     public class ChatGPT : MonoBehaviour
     {
-        [SerializeField] private string endPoint = "https://api.openai.com/v1/chat/completions";
-        [SerializeField] private string accessToken = "Bearer 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";
-        [SerializeField] private string accessKey = "freetoken";
-        [SerializeField] private EGPTModel egptModel = EGPTModel.GPT35Turbo;
+        [SerializeField]
+        [Tooltip(
+            "Endpoint for request come. You can setup it redirect to openai endpoint or yourself endpoint if you have own api.\n\n" +
+            "If you do not have openai account, you can try to use my endpoint is https://api.thangchiba.com/ai/api/v1/chat")]
+        private string endPoint = "https://api.openai.com/v1/chat/completions";
+
+        [SerializeField]
+        [Tooltip(
+            "The Access APIKey you need get from openai homepage.\n" +
+            "URL : https://platform.openai.com/account/api-key\n\n" +
+            "If you are using my endpoint(thangchiba) you dont need setup access token.")]
+        private string accessToken = "Bearer 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";
+
+        [SerializeField]
+        [Tooltip(
+            "If you are using openai api access token. You dont need care about this field.\n" +
+            "If you are using my endpoint(thangchiba) you need enter freetoken or token i provided.")]
+        private string accessKey = "freetoken";
+
+        [SerializeField]
+        [Tooltip(
+            "GPT Model that decided your output.\n" +
+            "You can read more info in here : https://platform.openai.com/docs/models")]
+        private EGPTModel egptModel = EGPTModel.GPT35Turbo;
+
+        /// <summary>
+        ///     Submit chat to ChatGPT.
+        /// </summary>
+        /// <param name="chatContent">Chat content that submitted</param>
+        /// <param name="controller">Chat Controller that have information of request body and handler response</param>
         public void Send(string chatContent, AIChatController controller)
         {
             controller.OnSubmitChat(chatContent);
             StartCoroutine(ChatWithAI(controller));
-        }
+        } 
         
         // ReSharper disable Unity.PerformanceAnalysis
         private IEnumerator ChatWithAI(AIChatController controller)
         {
             var sendMessages = new List<AIMessage>(controller.chatStorage.trains);
-            sendMessages.AddRange(controller.chatStorage.messages.TakeLast(controller.chatStorage.maxSendCount).ToList());
+            sendMessages.AddRange(
+                controller.chatStorage.messages.TakeLast(controller.chatStorage.maxSendCount).ToList());
             var requestBody = new AIRequestBody
             {
                 model = GetModelName(egptModel),
@@ -39,35 +65,32 @@ namespace MMORPG.UI.AIChat
             DownloadHandlerScript downloadHandler = new HandleChunkResponse(controller);
             using (request)
             {
-                request.uploadHandler = (UploadHandler)new UploadHandlerRaw(bodyRaw);
+                request.uploadHandler = new UploadHandlerRaw(bodyRaw);
                 request.downloadHandler = downloadHandler;
                 request.SetRequestHeader("Content-Type", "application/json");
-                request.SetRequestHeader("Authorization",accessToken);
-                request.SetRequestHeader("AccessKey",accessKey);
+                request.SetRequestHeader("Authorization", accessToken);
+                request.SetRequestHeader("AccessKey", accessKey);
                 yield return request.SendWebRequest();
-                if (request.result != UnityWebRequest.Result.Success)
-                {
-                    Debug.Log(request.error);
-                }
+                if (request.result != UnityWebRequest.Result.Success) Debug.Log(request.error);
             }
         }
-        
+
         private class HandleChunkResponse : DownloadHandlerScript
         {
-            private string deltaContent = "";
+            private readonly AIChatController controller;
             private string dataString = "";
-            private AIChatController controller;
+            private string deltaContent = "";
 
             public HandleChunkResponse(AIChatController controller)
             {
                 this.controller = controller;
             }
-        
+
             protected override bool ReceiveData(byte[] data, int dataLength)
             {
                 dataString = Encoding.UTF8.GetString(data, 0, dataLength);
-                var responseData = dataString.Split(new string[] { "data: " }, System.StringSplitOptions.RemoveEmptyEntries);
-        
+                var responseData = dataString.Split(new[] { "data: " }, StringSplitOptions.RemoveEmptyEntries);
+
                 foreach (var response in responseData)
                 {
                     if (response.Trim() == "[DONE]")
@@ -75,9 +98,9 @@ namespace MMORPG.UI.AIChat
                         controller.OnReceiveResponse(deltaContent);
                         break;
                     }
-        
+
                     var chatCompletion = JsonUtility.FromJson<ChatCompletionResponse>(response);
-        
+
                     foreach (var choice in chatCompletion.choices)
                     {
                         if (choice.delta == null || string.IsNullOrEmpty(choice.delta.content)) continue;
@@ -86,11 +109,12 @@ namespace MMORPG.UI.AIChat
                         break; // only consider the first delta with content field
                     }
                 }
+
                 return base.ReceiveData(data, dataLength);
             }
         }
-        
-        string GetModelName(EGPTModel model)
+
+        private string GetModelName(EGPTModel model)
         {
             switch (model)
             {
@@ -99,12 +123,12 @@ namespace MMORPG.UI.AIChat
                 case EGPTModel.GPT4:
                     return "gpt-4";
                 default:
-                    throw new System.ArgumentOutOfRangeException("Invalid GPTModel value");
+                    throw new ArgumentOutOfRangeException("Invalid GPTModel value");
             }
         }
     }
 
-    [System.Serializable]
+    [Serializable]
     public class Choice
     {
         public Delta delta;
@@ -112,14 +136,14 @@ namespace MMORPG.UI.AIChat
         public string finish_reason;
     }
 
-    [System.Serializable]
+    [Serializable]
     public class Delta
     {
         public string role;
         public string content;
     }
 
-    [System.Serializable]
+    [Serializable]
     public class ChatCompletionResponse
     {
         public string id;
@@ -127,6 +151,5 @@ namespace MMORPG.UI.AIChat
         public long created;
         public string model;
         public Choice[] choices;
-    
     }
 }
