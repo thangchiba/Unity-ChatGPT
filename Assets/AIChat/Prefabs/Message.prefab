@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 2679869446230407474}
   - component: {fileID: 2679869446230407475}
   - component: {fileID: 2679869446230407476}
-  - component: {fileID: 7507394845196815472}
+  - component: {fileID: 2138609548542022543}
   m_Layer: 5
   m_Name: Message
   m_TagString: Untagged
@@ -197,7 +197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 2
---- !u!114 &7507394845196815472
+--- !u!114 &2138609548542022543
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -206,10 +206,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2679869446230407478}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4733039c1810d4e0cb2838c0eee2930c, type: 3}
+  m_Script: {fileID: 11500000, guid: e482245393ab4069974ad2d93c042c49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  avatarUser: {fileID: 21300000, guid: 372e7b39fc8f34549ac25d8757965a2c, type: 3}
+  avatarUser: {fileID: 21300000, guid: c887ed2a931c29040bc544cd8c546e9f, type: 3}
   avatarAssistant: {fileID: 21300000, guid: 3042b019b052942a1baf7aa49d7ca6bb, type: 3}
   showAvatar: {fileID: 2679869446008515216}
   content: {fileID: 2050528751000797949}
