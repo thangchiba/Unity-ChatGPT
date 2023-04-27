@@ -21,7 +21,7 @@ namespace MMORPG.UI.AIChat
             "The Access APIKey you need get from openai homepage.\n" +
             "URL : https://platform.openai.com/account/api-key\n\n" +
             "If you are using my endpoint(thangchiba) you dont need setup access token.")]
-        private string accessToken = "Bearer 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";
+        private string accessToken = "Bearer sk-";
 
         [SerializeField]
         [Tooltip(
@@ -126,30 +126,5 @@ namespace MMORPG.UI.AIChat
                     throw new ArgumentOutOfRangeException("Invalid GPTModel value");
             }
         }
-    }
-
-    [Serializable]
-    public class Choice
-    {
-        public Delta delta;
-        public int index;
-        public string finish_reason;
-    }
-
-    [Serializable]
-    public class Delta
-    {
-        public string role;
-        public string content;
-    }
-
-    [Serializable]
-    public class ChatCompletionResponse
-    {
-        public string id;
-        public string @object;
-        public long created;
-        public string model;
-        public Choice[] choices;
     }
 }
