@@ -1,27 +1,38 @@
+/**
+ * *********************************************************************
+ * © 2023 ThangChiba. All rights reserved.
+ * 
+ * This code is licensed under the MIT License.
+ * 
+ * Homepage: https://thangchiba.com
+ * Email: thangchiba@gmail.com
+ * *********************************************************************
+ */
+
+
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace MMORPG.UI.AIChat
+namespace ThangChibaGPT
+
 {
     public class ChatSender : MonoBehaviour
     {
         public TMP_InputField chatContent;
-        [SerializeField] KeyCode submitKey = KeyCode.Return;
-        [SerializeField] private UnityEvent onSubmit; 
-        
+        [SerializeField] private KeyCode submitKey = KeyCode.Return;
+        [SerializeField] private UnityEvent onSubmit;
+
         // Update is called once per frame
-        void Update()
+        private void Update()
         {
-            if (Input.GetKeyDown(submitKey))
-            {
-                SubmitChat();
-            }
+            if (Input.GetKeyDown(submitKey)) SubmitChat();
         }
+
         public void SubmitChat()
         {
-            string content = chatContent.text.Trim();
-            if (content == "") return; 
+            var content = chatContent.text.Trim();
+            if (content == "") return;
             ChatManager.Instance.SubmitChat(content);
             onSubmit?.Invoke();
         }

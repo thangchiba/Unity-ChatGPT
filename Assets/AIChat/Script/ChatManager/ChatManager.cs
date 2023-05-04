@@ -1,6 +1,18 @@
+/**
+ * *********************************************************************
+ * © 2023 ThangChiba. All rights reserved.
+ * 
+ * This code is licensed under the MIT License.
+ * 
+ * Homepage: https://thangchiba.com
+ * Email: thangchiba@gmail.com
+ * *********************************************************************
+ */
+
 using UnityEngine;
 
-namespace MMORPG.UI.AIChat
+namespace ThangChibaGPT
+
 {
     [RequireComponent(typeof(ChatGPT))]
     [RequireComponent(typeof(ChatMode))]
@@ -9,6 +21,7 @@ namespace MMORPG.UI.AIChat
         public static ChatManager Instance { get; private set; }
         public ChatGPT ChatGPT { get; private set; }
         public ChatMode ChatMode { get; private set; }
+
         private void Awake()
         {
             if (Instance != null && Instance != this)
@@ -20,7 +33,7 @@ namespace MMORPG.UI.AIChat
                 Instance = this;
                 ChatGPT = GetComponent<ChatGPT>();
                 ChatMode = GetComponent<ChatMode>();
-                DontDestroyOnLoad(this.gameObject);
+                DontDestroyOnLoad(gameObject);
             }
         }
 

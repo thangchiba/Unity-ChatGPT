@@ -1,34 +1,40 @@
+/**
+ * *********************************************************************
+ * © 2023 ThangChiba. All rights reserved.
+ * 
+ * This code is licensed under the MIT License.
+ * 
+ * Homepage: https://thangchiba.com
+ * Email: thangchiba@gmail.com
+ * *********************************************************************
+ */
+
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace MMORPG.UI
+namespace ThangChibaGPT
+
 {
     public class ShowHideUI : MonoBehaviour
     {
-        [SerializeField] KeyCode showKey = KeyCode.Return;
-        [SerializeField] KeyCode hideKey = KeyCode.Escape;
-        [SerializeField] GameObject uiContainer;
-        [SerializeField] UnityEvent onShow;
-        [SerializeField] UnityEvent onHide;
+        [SerializeField] private KeyCode showKey = KeyCode.Return;
+        [SerializeField] private KeyCode hideKey = KeyCode.Escape;
+        [SerializeField] private GameObject uiContainer;
+        [SerializeField] private UnityEvent onShow;
+        [SerializeField] private UnityEvent onHide;
 
         // Start is called before the first frame update
-        void Start()
+        private void Start()
         {
             if (uiContainer != null)
                 uiContainer?.SetActive(false);
         }
 
         // Update is called once per frame
-        void Update()
+        private void Update()
         {
-            if (Input.GetKeyDown(showKey))
-            {
-                SetActive(true);
-            }
-            if (Input.GetKeyDown(hideKey))
-            {
-                SetActive(false);
-            }
+            if (Input.GetKeyDown(showKey)) SetActive(true);
+            if (Input.GetKeyDown(hideKey)) SetActive(false);
         }
 
         public void SetActive(bool isActive)

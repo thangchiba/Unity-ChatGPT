@@ -3,11 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using MMORPG.UI.AIChat.Model;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace MMORPG.UI.AIChat
+/**
+ * *********************************************************************
+ * © 2023 ThangChiba. All rights reserved.
+ * 
+ * This code is licensed under the MIT License.
+ * 
+ * Homepage: https://thangchiba.com
+ * Email: thangchiba@gmail.com
+ * *********************************************************************
+ */
+
+namespace ThangChibaGPT
+
 {
     public class ChatGPT : MonoBehaviour
     {
@@ -45,9 +56,7 @@ namespace MMORPG.UI.AIChat
         {
             controller.OnSubmitChat(chatContent);
             StartCoroutine(ChatWithAI(controller));
-        } 
-        
-        // ReSharper disable Unity.PerformanceAnalysis
+        } // ReSharper disable Unity.PerformanceAnalysis
         private IEnumerator ChatWithAI(AIChatController controller)
         {
             var sendMessages = new List<AIMessage>(controller.chatStorage.trains);

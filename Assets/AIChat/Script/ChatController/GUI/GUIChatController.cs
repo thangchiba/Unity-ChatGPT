@@ -1,7 +1,18 @@
+/**
+ * *********************************************************************
+ * © 2023 ThangChiba. All rights reserved.
+ * 
+ * This code is licensed under the MIT License.
+ * 
+ * Homepage: https://thangchiba.com
+ * Email: thangchiba@gmail.com
+ * *********************************************************************
+ */
+
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace MMORPG.UI.AIChat
+namespace ThangChibaGPT
 {
     [RequireComponent(typeof(ScrollRect))]
     public class GUIChatController : AIChatController
@@ -12,7 +23,7 @@ namespace MMORPG.UI.AIChat
 
         public override void OnSubmitChat(string content)
         {
-            AddMessage(Role.user,content);
+            AddMessage(Role.user, content);
             frameChat.AddChatMessage(content, "user");
             chunkMessage = frameChat.AddChatMessage("", "assistant");
         }

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2091135539660857407
+--- !u!1 &1650427011696119027
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,10 +8,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2091135539660857401}
-  - component: {fileID: 2091135539660857380}
-  - component: {fileID: 2091135539660857403}
-  - component: {fileID: 2091135539660857402}
+  - component: {fileID: 1650427011696119029}
+  - component: {fileID: 1650427011696119016}
+  - component: {fileID: 1650427011696119031}
+  - component: {fileID: 1650427011696119030}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -19,28 +19,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2091135539660857401
+--- !u!4 &1650427011696119029
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2091135539660857407}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 790.02155, y: 503.92502, z: 2.7482755}
+  m_GameObject: {fileID: 1650427011696119027}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2091135539660857380
+--- !u!114 &1650427011696119016
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2091135539660857407}
+  m_GameObject: {fileID: 1650427011696119027}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7fbede49627a4a14ac4b9c20651c98a5, type: 3}
@@ -50,13 +50,13 @@ MonoBehaviour:
   accessToken: Bearer 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
   accessKey: freetoken
   egptModel: 0
---- !u!114 &2091135539660857403
+--- !u!114 &1650427011696119031
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2091135539660857407}
+  m_GameObject: {fileID: 1650427011696119027}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9424642a451d4a4aadaccb7d91b1b626, type: 3}
@@ -82,13 +82,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &2091135539660857402
+--- !u!114 &1650427011696119030
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2091135539660857407}
+  m_GameObject: {fileID: 1650427011696119027}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 644aa703c3654fe4865fabbb417f9fdb, type: 3}

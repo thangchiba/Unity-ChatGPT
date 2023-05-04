@@ -1,17 +1,26 @@
-using System;
-using System.Collections;
+/**
+ * *********************************************************************
+ * © 2023 ThangChiba. All rights reserved.
+ * 
+ * This code is licensed under the MIT License.
+ * 
+ * Homepage: https://thangchiba.com
+ * Email: thangchiba@gmail.com
+ * *********************************************************************
+ */
+
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace MMORPG.UI.AIChat
+namespace ThangChibaGPT
+
 {
     public class BarkController : MonoBehaviour
     {
-        [SerializeField] GameObject barkBox;
+        [SerializeField] private GameObject barkBox;
         [SerializeField] private TextMeshProUGUI barkContent;
-        [Range(1f,10f)] public float hideAfterSeconds = 5f;
-        
+        [Range(1f, 10f)] public float hideAfterSeconds = 5f;
+
         public void HideBark()
         {
             barkBox.SetActive(false);
@@ -19,11 +28,11 @@ namespace MMORPG.UI.AIChat
 
         public void SetBark(string content)
         {
-            if(!barkBox.activeSelf)
+            if (!barkBox.activeSelf)
                 barkBox.SetActive(true);
             barkContent.text = content;
             CancelInvoke(nameof(HideBark));
-            Invoke(nameof(HideBark),hideAfterSeconds);
+            Invoke(nameof(HideBark), hideAfterSeconds);
         }
     }
 }

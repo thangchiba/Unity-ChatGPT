@@ -1,10 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using UnityEngine;
-using UnityEngine.UI;
+/**
+ * *********************************************************************
+ * © 2023 ThangChiba. All rights reserved.
+ * 
+ * This code is licensed under the MIT License.
+ * 
+ * Homepage: https://thangchiba.com
+ * Email: thangchiba@gmail.com
+ * *********************************************************************
+ */
 
-namespace MMORPG.UI.AIChat
+using System;
+
+namespace ThangChibaGPT
+
 {
     public enum Role
     {
@@ -13,7 +21,7 @@ namespace MMORPG.UI.AIChat
         assistant
     }
 
-    [System.Serializable]
+    [Serializable]
     public class AIMessage
     {
         public string role;

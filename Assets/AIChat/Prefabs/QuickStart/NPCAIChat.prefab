@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 676465004154179565}
   - component: {fileID: 676465004154179562}
   m_Layer: 0
-  m_Name: NPCAITrigger
+  m_Name: NPCAIChat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

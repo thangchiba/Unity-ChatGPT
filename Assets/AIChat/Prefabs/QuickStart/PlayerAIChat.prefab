@@ -295,7 +295,7 @@ GameObject:
   - component: {fileID: 394656507834726361}
   - component: {fileID: 394656507834726362}
   m_Layer: 0
-  m_Name: PlayerAITrigger
+  m_Name: PlayerAIChat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

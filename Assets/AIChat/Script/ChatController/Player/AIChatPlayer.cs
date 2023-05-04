@@ -1,8 +1,19 @@
-using System;
+/**
+ * *********************************************************************
+ * © 2023 ThangChiba. All rights reserved.
+ * 
+ * This code is licensed under the MIT License.
+ * 
+ * Homepage: https://thangchiba.com
+ * Email: thangchiba@gmail.com
+ * *********************************************************************
+ */
+
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MMORPG.UI.AIChat
+namespace ThangChibaGPT
+
 {
     [RequireComponent(typeof(SphereCollider))]
     public class AIChatPlayer : MonoBehaviour
@@ -18,11 +29,23 @@ namespace MMORPG.UI.AIChat
             listAIChatController = new List<AIChatController>();
         }
 
+        private void OnTriggerEnter(Collider other)
+        {
+            var npcChat = other.GetComponent<NpcChatController>();
+            if (npcChat != null) listAIChatController.Add(npcChat);
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            var npcChat = other.GetComponent<NpcChatController>();
+            if (npcChat != null) listAIChatController.Remove(npcChat);
+        }
+
         public List<AIChatController> GetListHandler()
         {
             return listAIChatController;
         }
-        
+
         public void ResetHandler()
         {
             listAIChatController = new List<AIChatController>();
@@ -37,23 +60,5 @@ namespace MMORPG.UI.AIChat
         {
             collider.enabled = enableTrigger;
         }
-        
-        private void OnTriggerEnter(Collider other)
-        {
-            var npcChat = other.GetComponent<NpcChatController>();
-            if (npcChat != null)
-            {
-                listAIChatController.Add(npcChat);
-            }
-        }
-        private void OnTriggerExit(Collider other)
-        {
-            var npcChat = other.GetComponent<NpcChatController>();
-            if (npcChat != null)
-            {
-                listAIChatController.Remove(npcChat);
-            }
-        }
-
     }
 }

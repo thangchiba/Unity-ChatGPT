@@ -1,6 +1,18 @@
+/**
+ * *********************************************************************
+ * © 2023 ThangChiba. All rights reserved.
+ * 
+ * This code is licensed under the MIT License.
+ * 
+ * Homepage: https://thangchiba.com
+ * Email: thangchiba@gmail.com
+ * *********************************************************************
+ */
+
 using UnityEngine;
 
-namespace MMORPG.UI.AIChat
+namespace ThangChibaGPT
+
 {
     public class AIState : ChatModeState
     {
@@ -16,7 +28,7 @@ namespace MMORPG.UI.AIChat
         {
             chatLog.SetActive(true);
         }
-        
+
         public override void OnUninstall()
         {
             chatLog.SetActive(false);

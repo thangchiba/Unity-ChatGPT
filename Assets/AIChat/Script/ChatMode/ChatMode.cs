@@ -1,9 +1,20 @@
-using System;
+/**
+ * *********************************************************************
+ * © 2023 ThangChiba. All rights reserved.
+ * 
+ * This code is licensed under the MIT License.
+ * 
+ * Homepage: https://thangchiba.com
+ * Email: thangchiba@gmail.com
+ * *********************************************************************
+ */
+
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace MMORPG.UI.AIChat
+namespace ThangChibaGPT
+
 {
     public class ChatMode : MonoBehaviour
     {

@@ -1,13 +1,25 @@
+/**
+ * *********************************************************************
+ * © 2023 ThangChiba. All rights reserved.
+ * 
+ * This code is licensed under the MIT License.
+ * 
+ * Homepage: https://thangchiba.com
+ * Email: thangchiba@gmail.com
+ * *********************************************************************
+ */
+
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace MMORPG.UI.AIChat
+namespace ThangChibaGPT
+
 {
     [RequireComponent(typeof(Button))]
     public class ButtonChatMode : MonoBehaviour
     {
-        private Button button;
         [SerializeField] private EChatMode chatMode;
+        private Button button;
 
         public void Start()
         {
@@ -19,13 +31,9 @@ namespace MMORPG.UI.AIChat
         private void HandleChangeChatMode(SChatMode sChatMode)
         {
             if (sChatMode.eChatMode == chatMode)
-            {
                 button.GetComponent<Image>().color = Color.green;
-            }
             else
-            {
                 button.GetComponent<Image>().color = Color.grey;
-            }
         }
 
         private void OnButtonClick()
