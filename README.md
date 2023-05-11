@@ -5,7 +5,7 @@
 This package help you integration ChatGPT to your game as a AI chatbot.
 
 ## Online Demo :
-https://thangchiba.com/rpg
+https://thangchiba.com/rpg <br/>
 Right mouse click to move and press Enter to open chatbox.
 
 ## Features
@@ -24,20 +24,21 @@ Right mouse click to move and press Enter to open chatbox.
 
 ## Usage
 You can see quickstart tutorial:
-・Vietnamese : https://youtu.be/Ft_0Z7u_8Nk
-・Japanese : https://youtube.com/
-・English : https://youtu.be/y6t-QHnXxWQ
+- Vietnamese : https://youtu.be/Ft_0Z7u_8Nk
+- Japanese : https://youtube.com/ <br/>
+- English : https://youtu.be/y6t-QHnXxWQ  <br/> <br/>
 I apologize for my poor English. If you have any questions, you can email me or message me on Facebook.
 
 
 ## Security
-The OpenAI APIKey place on client side is dangerous. You can setup limit of using but i'm not recommend. You should setup yourown backend side to redirect request from user to openai.
+The OpenAI APIKey place on client side is dangerous. You can setup limit of using but i'm not recommend.  <br/>
+You should setup yourown backend side to redirect request from user to openai.
 
 ## Support
-For support, email : thangchiba@gmail.com.
-If you can, please give me feedback so I can improve it. 
-Please subscribe to me if you are interested.
+For support, email : thangchiba@gmail.com.  <br/>
+If you can, please give me feedback so I can improve it.   <br/>
+Please subscribe to me if you are interested.  <br/>
 
 ## License
-This project is licensed under the MIT License. See the `LICENSE` file for details.
+This project is licensed under the MIT License. See the `LICENSE` file for details.  <br/>
 You can use for any purpose. If you can, please give me a feed back.
