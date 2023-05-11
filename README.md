@@ -24,9 +24,9 @@ Right mouse click to move and press Enter to open chatbox.
 
 ## Usage
 You can see quickstart tutorial:
-・Vietnamese : https://youtube.com/
+・Vietnamese : https://youtu.be/Ft_0Z7u_8Nk
 ・Japanese : https://youtube.com/
-・English : https://youtube.com/
+・English : https://youtu.be/y6t-QHnXxWQ
 I apologize for my poor English. If you have any questions, you can email me or message me on Facebook.
 
 
