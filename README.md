@@ -22,11 +22,13 @@ Right mouse click to move and press Enter to open chatbox.
 - Scrollable GUI: The GUI is scrollable.
 
 
-## Usage
-You can see quickstart tutorial:
+## Text Tutorial
+- https://thangchiba.notion.site/Unity-AIChat-Integration-75b81a5e792d4a4daf814d8bfd5fdeb2 <br/><br/>
+## Video Tutorial
 - Vietnamese : https://youtu.be/Ft_0Z7u_8Nk
 - Japanese : https://youtube.com/ <br/>
 - English : https://youtu.be/y6t-QHnXxWQ  <br/> <br/>
+
 I apologize for my poor English. If you have any questions, you can email me or message me on Facebook.
 
 
